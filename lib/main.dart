@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social/shopping_home.dart';
 
 import 'registration.dart';
 
@@ -13,10 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Social',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const Registration(),
+          primarySwatch: Colors.blue, scaffoldBackgroundColor: Colors.white),
+      home: const ShoppingHomePage(),
     );
   }
 }
