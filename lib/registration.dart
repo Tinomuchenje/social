@@ -4,6 +4,7 @@ import 'package:social/shopping/shopping_home.dart';
 import 'components/custom_app_bar.dart';
 import 'components/custom_form_field.dart';
 import 'constants/style_constants.dart';
+import 'services/password_validation_service.dart';
 
 class Registration extends StatefulWidget {
   const Registration({Key? key}) : super(key: key);
@@ -71,29 +72,29 @@ class _RegistrationState extends State<Registration> {
       return "Passwords don't match";
     }
 
-    if (!_validatePasswordRegex(r'(?=.*[0-9])')) {
+    if (!PasswordValidationService.conatainsDigit(newPasswordController.text)) {
       return "At least one digit required";
     }
 
-    if (!_validatePasswordRegex(r'(?=.*[a-z])')) {
+    if (!PasswordValidationService.containsLowercase(
+        newPasswordController.text)) {
       return "At least one lowercase character required";
     }
 
-    if (!_validatePasswordRegex(r'(?=.*[A-Z])')) {
+    if (!PasswordValidationService.containsUppercase(
+        newPasswordController.text)) {
       return "At least one uppercase character required";
     }
 
-    if (!_validatePasswordRegex(r'(?=.*[!@#$%^&*()_+])')) {
+    if (!PasswordValidationService.containsSpecialCharater(
+        newPasswordController.text)) {
       return "At least one special character required";
     }
 
-    if (!_validatePasswordRegex(r'(?=.{8})')) {
-      return "At least one uppercase character required";
+    if (!PasswordValidationService.containsMinimumEightCharacters(
+        newPasswordController.text)) {
+      return "A minimum length of 8 characters";
     }
-  }
-
-  bool _validatePasswordRegex(String expression) {
-    return RegExp(expression).hasMatch(newPasswordController.text);
   }
 
   Padding _confirmButton(BuildContext context) {
