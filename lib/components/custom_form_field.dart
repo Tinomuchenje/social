@@ -30,7 +30,7 @@ class _CustomPasswordFormFieldState extends State<CustomPasswordFormField> {
         obscureText: !widget.passwordVisible,
         decoration: InputDecoration(
           filled: true,
-          fillColor: formFieldFillColor,
+          fillColor: defaultGrey,
           contentPadding: formFieldContentPadding,
           hintText: widget.hintText,
           focusedBorder: OutlineInputBorder(

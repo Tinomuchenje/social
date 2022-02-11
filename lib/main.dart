@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social/shopping_home.dart';
 
-import 'registration.dart';
 
 void main() {
   runApp(const MyApp());
