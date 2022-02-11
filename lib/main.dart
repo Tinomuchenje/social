@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:social/shopping_home.dart';
-
+import 'package:social/registration.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,8 +14,9 @@ class MyApp extends StatelessWidget {
       title: 'Social',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-          primarySwatch: Colors.blue, scaffoldBackgroundColor: Colors.white),
-      home: const ShoppingHomePage(),
+          primarySwatch: Colors.blueGrey,
+          scaffoldBackgroundColor: Colors.white),
+      home: const Registration(),
     );
   }
 }

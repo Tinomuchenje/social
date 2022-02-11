@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'components/custom_app_bar.dart';
+import '../components/custom_app_bar.dart';
 import 'components/profile.dart';
-import 'profile.dart';
+import 'data/profile_model.dart';
 
 class ShoppingHomePage extends StatefulWidget {
   const ShoppingHomePage({Key? key}) : super(key: key);
@@ -26,8 +26,8 @@ class _ShoppingHomePageState extends State<ShoppingHomePage> {
               _topInformationSection(),
               Expanded(
                   child: GridView.count(
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
+                mainAxisSpacing: 22,
+                crossAxisSpacing: 22,
                 crossAxisCount: 2,
                 children: _buildProfiles(),
               ))

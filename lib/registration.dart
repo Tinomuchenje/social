@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social/shopping/shopping_home.dart';
 
 import 'components/custom_app_bar.dart';
 import 'components/custom_form_field.dart';
@@ -21,7 +22,10 @@ class _RegistrationState extends State<Registration> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'PAAQ',),
+      appBar: CustomAppBar(
+        elevation: 0,
+        title: 'PAAQ',
+      ),
       body: SafeArea(
           child: Padding(
         padding: const EdgeInsets.all(18.0),
@@ -74,6 +78,12 @@ class _RegistrationState extends State<Registration> {
               onPressed: () {
                 if (_changePasswordFormKey.currentState!.validate()) {
                   _changePasswordFormKey.currentState!.save();
+
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const ShoppingHomePage(),
+                    ),
+                  );
                 }
               },
               child: const Text(

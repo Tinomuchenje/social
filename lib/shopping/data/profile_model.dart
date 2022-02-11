@@ -8,7 +8,7 @@ class Profile {
 
   static List<Profile> profiles = [
     Profile(name: 'one', profilePictureUrl: 'assets/images/one.jpg'),
-    Profile(name: 'three', profilePictureUrl: 'assets/images/three.jpg'),
+    Profile(name: 'four', profilePictureUrl: 'assets/images/four.jpg'),
     Profile(name: 'eight', profilePictureUrl: 'assets/images/eight.jpg'),
     Profile(name: 'two', profilePictureUrl: 'assets/images/two.jpg'),
     Profile(name: 'five', profilePictureUrl: 'assets/images/five.jpg'),
