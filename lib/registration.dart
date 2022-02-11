@@ -20,6 +20,13 @@ class _RegistrationState extends State<Registration> {
       confirmNewPasswordController = TextEditingController(text: '');
 
   @override
+  void dispose() {
+    newPasswordController.dispose();
+    confirmNewPasswordController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
@@ -44,12 +51,7 @@ class _RegistrationState extends State<Registration> {
                       hintText: 'Confirm New Password',
                       passwordVisible: _confirmPasswordVisible,
                       fieldValue: confirmNewPasswordController,
-                      customValidator: (value) {
-                        if (newPasswordController.text.trim() !=
-                            confirmNewPasswordController.text.trim()) {
-                          return "Passwords dont't match";
-                        }
-                      },
+                      customValidator: validatePassword,
                     ),
                     Column(
                       children: passwordValidConditions(),
@@ -61,6 +63,37 @@ class _RegistrationState extends State<Registration> {
         ),
       )),
     );
+  }
+
+  String? validatePassword(value) {
+    if (newPasswordController.text.trim() !=
+        confirmNewPasswordController.text.trim()) {
+      return "Passwords don't match";
+    }
+
+    if (!_validatePasswordRegex(r'(?=.*[0-9])')) {
+      return "At least one digit required";
+    }
+
+    if (!_validatePasswordRegex(r'(?=.*[a-z])')) {
+      return "At least one lowercase character required";
+    }
+
+    if (!_validatePasswordRegex(r'(?=.*[A-Z])')) {
+      return "At least one uppercase character required";
+    }
+
+    if (!_validatePasswordRegex(r'(?=.*[!@#$%^&*()_+])')) {
+      return "At least one special character required";
+    }
+
+    if (!_validatePasswordRegex(r'(?=.{8})')) {
+      return "At least one uppercase character required";
+    }
+  }
+
+  bool _validatePasswordRegex(String expression) {
+    return RegExp(expression).hasMatch(newPasswordController.text);
   }
 
   Padding _confirmButton(BuildContext context) {
@@ -95,11 +128,11 @@ class _RegistrationState extends State<Registration> {
 
   List<Widget> passwordValidConditions() {
     List<String> conditions = [
-      'At least one digit 0-9',
-      'At least one lowercase character',
-      'At least one uppercase character',
-      'At least one special character',
-      'A minimum length of 8 characters'
+      'At least one digit 0-9', //?=.*[0-9]
+      'At least one lowercase character', //(?=.*[a-z])
+      'At least one uppercase character', // (?=.*[A-Z])
+      'At least one special character', // (?=.*[!@#$%^&*()_+])
+      'A minimum length of 8 characters' //(?=.{8})
     ];
     List<Widget> validConditions = [];
 
