@@ -119,13 +119,7 @@ void main() {
     // Arrange
     String password = "passWo#rd9";
     // Act
-    bool result =
-        PasswordValidationService.containsMinimumEightCharacters(password) &&
-            PasswordValidationService.containsSpecialCharater(password) &&
-            PasswordValidationService.containsUppercase(password) &&
-            PasswordValidationService.containsLowercase(password) &&
-            PasswordValidationService.conatainsDigit(password);
-
+    bool result = PasswordValidationService.validateAllConditions(password);
     // Assert
     expect(true, result);
   });
